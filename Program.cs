@@ -31,8 +31,30 @@ int CheckInt(string message)
     return 0;
 }
 
+string[] ArrayOnlyThreeChar(string[] arrayInput)
+{
+    int numberElements = 0;
+    string[] resultOutputArray = new string[numberElements];
+    int index2 = 0;
+    for(int index = 0; index < arrayInput.Length; index++)
+    {
+        if(arrayInput[index].Length <= 3)
+        {
+            numberElements++;
+            Array.Resize<string>(ref resultOutputArray, numberElements);
+            resultOutputArray[index2] = arrayInput[index];
+            index2++;
+        }
+    }
+    return resultOutputArray;
+}
 
 int inputArrayLength = CheckInt("Введите число элементов массива");
 string [] inputArray = ArrayInput(inputArrayLength);
 Console.WriteLine("Все элементы введенного вами массива (< element >): ");
 PrintArray(inputArray);
+string[] result = ArrayOnlyThreeChar(inputArray);
+Console.WriteLine();
+Console.WriteLine("Все элементы массива меньше или равные трем символам (< element >): ");
+PrintArray(result);
+
